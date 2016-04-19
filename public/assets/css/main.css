@@ -1,0 +1,48 @@
+* { font-family: sans-serif; font-size: 12px; }
+
+.popup{ 
+    border: 1px solid #888; 
+    margin: 10px; 
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px #aaa;
+    background:#eee;
+}
+
+.containers { 
+    clear: both;
+    width:500px;
+}
+
+.containers .popup{
+    min-height: 20px;
+    cursor:move;
+}
+
+.containers .popup .header{
+    padding:5px;
+}
+
+.containers .popup .content{
+    min-height: 40px;
+    height:auto;
+    width: 100%;
+    border-top: 1px solid rgb(136, 136, 136);
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+.containers .ph {
+    margin: 10px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    width:100%;
+}
+
+
+
+.ui-state-hover{
+    background: red;
+}
