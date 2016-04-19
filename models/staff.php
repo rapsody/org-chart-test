@@ -1,6 +1,7 @@
 <?php
+
   class Staff {
- //   public $id;
+
     public function __construct() {
    //   $this->id      = $id;
     }
@@ -10,16 +11,17 @@
 
       $list = [];
       $db = Db::getInstance();
+
       $req = $db->query('SELECT * FROM staff');
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $staff) {
-        //$list[] = new Post($post['id'], $post['author'], $post['content']);
+
         $data['id'] = $staff['ID'];
         $data['name'] = $staff['Firstname'].' '.$staff['Surname'];
         $data['title'] = $staff['Title'];
         $data['parentID'] = $staff['ParentID'];
-        $data['base'] = $staff['baseID'];//shoudl change name in database
+        $data['base'] = $staff['baseID'];//should change name in database
 
         array_push($list,$data);
       }
@@ -33,22 +35,24 @@
       $list = [];
       $db = Db::getInstance();
 
-       $userId = str_replace("parentID_", "", $postdata['targetId']);
-      $targetId = str_replace("parentID_", "", $postdata['userId']);
+      $userId = str_replace("parentID_", "", $postdata['userId']);//get the User ID
+      $targetId = str_replace("contentID_", "", $postdata['targetId']);//get the Target ID
 
-      if($userId !=NULL && $userId !=NULL){
+      if($userId !=NULL && $targetId !=NULL){
 
         // Make a safe query
         $query = sprintf("UPDATE `staff` SET `ParentID` = '%d' 
                WHERE `ID` = '%d'",
-              $userId, 
-              $targetId);
+               $targetId,
+              $userId);
 
+
+        //update staff DB
         $req = $db->query($query );
 
-        return  true ;
+        return   array("sucess"=>true) ;
 
-      }else return json_encode("error") ;
+      }else return array("sucess"=>false) ;
     }
 
 

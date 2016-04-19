@@ -1,4 +1,5 @@
 <?php
+  //initiate database
   class Db {
     private static $instance = NULL;
 

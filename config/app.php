@@ -1,6 +1,6 @@
 <?php
 
-define('APP_PATH', $_SERVER['DOCUMENT_ROOT'].'test/');
+define('APP_PATH', $_SERVER['DOCUMENT_ROOT'].'org-chart-test/');
 define('CNT_PATH', APP_PATH.'controllers/');
 define('MODEL_PATH', APP_PATH.'models/');
 define('VIEW_PATH', APP_PATH.'views/');

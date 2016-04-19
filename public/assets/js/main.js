@@ -2,10 +2,10 @@
 
 $(document).ready(function(){
 
-    var URL ="http://52.62.59.93/test/public/";
+    var URL ="/org-chart-test/public/";
 
     $.ajax({
-        url: URL+ "index.php?api=staff",
+        url: URL+ "api.php",
         success: function(response) {
 
             createList(response);
@@ -33,6 +33,7 @@ $(document).ready(function(){
 
             var divContent = document.createElement("div");
             $(divContent).attr("class", "content");
+            $(divContent).attr("id", "contentID_"+this.id);
 
             if(this.base == 1 && baseUsed ==false){
 
@@ -70,7 +71,7 @@ $(document).ready(function(){
                 var userId = (ui.draggable).get(0).id;//ui.draggable.attr('id');
                 var data = {userId:userId,targetId:targetId};
 
-                $.post( URL+"index.php?api=staff", data, function( result ) {
+                $.post( URL+"api.php", data, function( result ) {
                   
                     $('.results').text("Successfully updated").fadeOut(3000);
                 });
