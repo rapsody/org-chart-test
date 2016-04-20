@@ -1,8 +1,8 @@
 <?php
 
-ini_set("error_reporting", 0);
+ini_set("error_reporting", 1);
 // Report all errors
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 require_once('../config/app.php');//initial config
 

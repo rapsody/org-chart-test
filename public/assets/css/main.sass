@@ -1,0 +1,61 @@
+$font_stack:  Helvetica, sans_serif
+$primary_font_size: 12px
+$primary_padding: 5px
+$primary_text: #999
+
+$primary_background:#eee
+$primary_height:auto
+$full_width: 100%
+$min_height: 20px
+$min_height_cnt: 40px
+$box_shadow: 1px 2px 4px #aaa
+
+$hover_clr: #ff0000
+
+//popup specific
+$popup_brdr: 1px solid #888 
+$popup_mrgn: 10px
+
+//containers
+$cntr_brdr: 1px solid #0f0
+$cntr_width: 500px
+
+//results
+$pad_top: 20px
+
+*  
+  font-family: $font_stack 
+  font-size: $primary_font_size
+
+.containers 
+  clear: both
+  width: $cntr_width
+
+  .popup
+    min-height: $min_height
+    cursor: move
+    border: $popup_brdr 
+    margin: $popup_mrgn 
+    border-radius: $primary_padding
+    box-shadow: $box_shadow
+    background: $primary_background
+    
+    .header
+      padding: $primary_padding
+    
+    .content
+      min-height: $min_height_cnt
+      height: $primary_height
+      width: $full_width
+      border-top: 1px solid rgb(136, 136, 136)
+      background: rgb(255, 255, 255) none repeat scroll 0% 0%
+      border-bottom-right-radius: $primary_padding
+      border-bottom-left-radius: $primary_padding
+            
+.results
+  padding-top: $pad_top
+
+.ui-state-hover
+  color: $primary_text
+  background: $hover_clr!important
+

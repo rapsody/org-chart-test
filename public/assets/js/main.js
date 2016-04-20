@@ -65,8 +65,12 @@ $(document).ready(function(){
             out: function() {
                 $( this ).droppable( "option", "disabled", false );
             },
+            /*over: function( event, ui ) {
+                $(this).parent().removeClass('ui-state-hover');
+                $(this).parent(0).addClass('ui-state-hover');
+            },*/
             drop: function(event, ui) {
-   
+
                 var targetId = this.id;//$(this).parent().attr('id');
                 var userId = (ui.draggable).get(0).id;//ui.draggable.attr('id');
                 var data = {userId:userId,targetId:targetId};
