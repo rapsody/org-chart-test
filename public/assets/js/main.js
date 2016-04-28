@@ -2,42 +2,40 @@
 
 function updateUserData(id,name,title){
 
-        var first = document.getElementById('updatename');
-        first.value = name;
+    var first = document.getElementById('updatename');
+    first.value = name;
 
-        var second = document.getElementById('updatetitle');
-        second.value = title;
+    var second = document.getElementById('updatetitle');
+    second.value = title;
 
-        var third = document.getElementById('updateid');
-        third.value = id;
-
-
+    var third = document.getElementById('updateid');
+    third.value = id;
 
 }
-
-
 
 
 $(document).ready(function(){
 
     var URL ="/org-chart-test/public/";
+    firstCall();
+    function firstCall(){
 
-    $.ajax({
-        url: URL+ "api.php",
-        success: function(response) {
+        $( ".containers" ).empty();
+        $.ajax({
+            url: URL+ "api.php",
+            success: function(response) {
 
-            createList(response);
-            setDragDrop();
-        },
-        error: function(response) {
-            $('.results').text("No data could be retrieved").fadeOut(10000);
-        
-        }
-    });
-
+                createList(response);
+                setDragDrop();
+            },
+            error: function(response) {
+                $('.results').text("No data could be retrieved").fadeOut(10000);
+            
+            }
+        });
+     }
     
     $( "#updateusers" ).submit(function( event ) {
-      
 
         var userId = document.getElementById('updateid').value;
         var updatename = document.getElementById('updatename').value;
@@ -45,7 +43,7 @@ $(document).ready(function(){
 
         var data = {userId:userId,updatename:updatename,updatetitle:updatetitle};
 
-      $.ajax({
+        $.ajax({
               type: "POST",
               url:  URL+"put.php", 
               data: data,
@@ -60,8 +58,8 @@ $(document).ready(function(){
 
                         var third = document.getElementById('updateid');
                         third.value = "";
-
-                        location.reload(); 
+                        firstCall();
+                      //  location.reload(); 
 
                 }   
              
