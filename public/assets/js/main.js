@@ -1,5 +1,23 @@
 'use strict';
 
+function updateUserData(id,name,title){
+
+        var first = document.getElementById('updatename');
+        first.value = name;
+
+        var second = document.getElementById('updatetitle');
+        second.value = title;
+
+        var third = document.getElementById('updateid');
+        third.value = id;
+
+
+
+}
+
+
+
+
 $(document).ready(function(){
 
     var URL ="/org-chart-test/public/";
@@ -17,8 +35,47 @@ $(document).ready(function(){
         }
     });
 
+    
+    $( "#updateusers" ).submit(function( event ) {
+      
+
+        var userId = document.getElementById('updateid').value;
+        var updatename = document.getElementById('updatename').value;
+        var updatetitle = document.getElementById('updatetitle').value;
+
+        var data = {userId:userId,updatename:updatename,updatetitle:updatetitle};
+
+      $.ajax({
+              type: "POST",
+              url:  URL+"put.php", 
+              data: data,
+              success: function(msg)
+                {
+                  
+                        var first = document.getElementById('updatename');
+                        first.value = "";
+
+                        var second = document.getElementById('updatetitle');
+                        second.value = "";
+
+                        var third = document.getElementById('updateid');
+                        third.value = "";
+
+                        location.reload(); 
+
+                }   
+             
+            });
+
+
+
+      event.preventDefault();
+    });
+
+
     function createList(data){
 
+   
         jQuery.each(data, function() {
 
             var baseUsed =false;
@@ -29,7 +86,20 @@ $(document).ready(function(){
 
             var divHeader = document.createElement("div");
             $(divHeader).attr("class", "header");
-            $(divHeader).text(this.name+" ("+this.title+")");
+
+
+            var a =  $('<a></a>').attr("href","javascript:updateUserData("+this.id+",'"+this.name+"','"+this.title+"')").attr("class","link")
+            .append(this.name+" ("+this.title+")");
+
+
+          //  var a = document.createElement('');
+          //  var linkText = document.createTextNode(this.name+" ("+this.title+")");
+          // // a.appendChild(linkText);
+          //  a.href = "javascript:updateUserData";
+
+
+
+           // $(divHeader).text(this.name+" ("+this.title+")");
 
             var divContent = document.createElement("div");
             $(divContent).attr("class", "content");
@@ -41,6 +111,7 @@ $(document).ready(function(){
 
                 $('.containers').append(div);
                 $(div).append(divHeader);
+                $(divHeader).append(a);
                 $(div).append(divContent);
 
                 baseUsed = true;//to stop replication
@@ -48,6 +119,7 @@ $(document).ready(function(){
             }else{
                           
                 $(div).append(divHeader);
+                $(divHeader).append(a);
                 $(div).append(divContent);
                 $(div).appendTo('#parentID_'+this.parentID +' .content:nth(0)');//nly append to 1 DIV
             }
@@ -62,6 +134,8 @@ $(document).ready(function(){
 
             activeClass: "ui-state-default",
             hoverClass: "ui-state-hover",
+            greedy:true,
+            cancel : ".header",
             out: function() {
                 $( this ).droppable( "option", "disabled", false );
             },
@@ -84,9 +158,10 @@ $(document).ready(function(){
                 ui.draggable.detach().appendTo($(this));
             }
         });
-        
+        var draggableDiv = $('.popup');
         $('.popup').draggable({
             helper: 'clone',
+             handle: $('.content', draggableDiv),
             containment:"document"
         });
     }

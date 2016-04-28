@@ -2,12 +2,17 @@
   font-family: Helvetica, sans_serif;
   font-size: 12px; }
 
+.results {
+  padding-top: 20px; }
+
+
+
 .containers {
   clear: both;
   width: 500px; }
   .containers .popup {
     min-height: 20px;
-    cursor: move;
+    /*cursor: move;*/
     border: 1px solid #888;
     margin: 10px;
     border-radius: 5px;
@@ -24,11 +29,13 @@
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px; }
 
-.results {
-  padding-top: 20px; }
 
-.ui-state-hover {
-  color: #999;
-  background: #ff0000 !important; }
-
-/*# sourceMappingURL=main.css.map */
+.ui-state-hover{
+    color:#999;
+    background: #ff0000 !important;
+}
+/*
+.ui-state-default{
+    background: #000!important;
+}
+*/

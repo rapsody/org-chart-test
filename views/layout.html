@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Squiz Test</title>
+  <title>Squiz Test - Update</title>
   <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
@@ -12,6 +12,14 @@
 <div class="main">
 	<?php include $template; ?>
 </div>
+
+<div>
+	<form id="updateusers" >
+		<input type='hidden' name='updateid' id='updateid' />
+		<br>Update Name <input type='text' name='updatename' id='updatename' />
+		<br>Update Title<input type='text' name='updatetitle' id='updatetitle' />
+		<br><input type='submit' name='submit' id='submit' /><br>
+	</form>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="assets/js/main.js"></script>

@@ -66,6 +66,44 @@
 
     }
 
+
+    public static function updateData($postdata = NULL) {
+      //update staff table with new position
+
+      $list = [];
+      $db = Db::getInstance();
+
+      $userId = $postdata['userId'];
+      $updatename = $postdata['updatename'];
+      $updatetitle = $postdata['updatetitle'];
+
+      if($userId !=NULL ){
+
+      //  $query = sprintf("SELECT * FROM staff  WHERE `ID` = '%d'", $userId);
+
+      ///  $req = $db->query( $query); //make sure its not the base user
+        
+       // foreach($req->fetchAll() as $staff) { $base = $staff['baseID']; }
+
+       // if($base !=1){
+
+        $name = explode(" ", $updatename);
+       // if($name)
+          $query = sprintf("UPDATE `staff` SET `Firstname` = '%s' ,`Surname` = '%s' ,`Title` = '%s' 
+                 WHERE `ID` = '%d'",
+                 $name[0],
+                $name[1],
+                 $updatetitle,
+                $userId);
+
+          //update staff DB
+          $req = $db->query($query );
+       // }
+        return   array("sucess"=>success) ;
+
+      }else return array("sucess"=>false) ;
+
+    }
     private static function reorderOrg($array, $parent = 0, $depth = 0){
           //reorganise org 
 
